@@ -1,0 +1,53 @@
+﻿<div>
+    <div class="pull-left main-block">
+        <h1>Tasks List Page</h1>
+
+        <div class="btn-group buttons">
+            <a href="#!/tasks/create" class="btn btn-success">Create New Task</a>
+            <ul class="pagination custom-pagination">
+                <li><a ng-repeat="i in getNumbersForPagination() track by $index" ng-click="changePage($index+1)" ng-class="{ active: $index == page }">{{$index+1}}</a></li>
+            </ul>
+        </div>
+
+        <h3 class="text-center" ng-if="getFilteredCurrentPageTasks().length == 0">You haven't got any tasks</h3>
+
+        <div class="col-md-12 well well-sm" ng-repeat="task in getFilteredCurrentPageTasks()">
+            <a ng-click="delete(task.id)" title="Delete"><i class="fa fa-trash pull-right"></i></a>
+            <a ng-href="#!/tasks/update/{{task.id}}" title="Update"><i class="fa fa-pencil pull-right"></i></a>
+            <a ng-href="#!/tasks/{{task.id}}" title="Details"><i class="fa fa-info pull-right"></i></a>
+
+            <div class="label label-success" ng-if="task.isDone">Done</div>
+            <div class="label label-danger" ng-if="task.isExpired">Expired</div>
+
+            <h2>{{task.title}}</h2>
+            <div class="label label-success tag" ng-repeat="tag in task.relatedTags">{{tag}}</div>
+            <p class="task-content">{{task.content}}</p>
+            <span class="pull-right">{{task.creationDate}}</span>
+        </div>
+    </div>
+
+    <div class="pull-right search-form">
+        <form>
+            <h4>Search by:</h4>
+            <fieldset>
+                <div class="checkbox">
+                    <label><input type="checkbox" ng-model="searchOptions.title.enabled">In title</label>
+                </div>
+                <input type="text" ng-model="searchOptions.title.pattern" />
+            </fieldset>
+            <fieldset>
+                <div class="checkbox">
+                    <label><input type="checkbox" ng-model="searchOptions.content.enabled">In content</label>
+                </div>
+                <input type="text" ng-model="searchOptions.content.pattern" />
+            </fieldset>
+            <fieldset>
+                <div class="checkbox">
+                    <label><input type="checkbox" ng-model="searchOptions.tags.enabled">By tags</label>
+                </div>
+                <select class="form-control" ng-options="tag.name for tag in tags track by tag.name" ng-model="searchOptions.tags.pattern"></select>
+            </fieldset>
+        </form>
+    </div>
+
+</div>

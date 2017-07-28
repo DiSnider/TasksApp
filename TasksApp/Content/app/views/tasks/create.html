@@ -1,0 +1,33 @@
+﻿<h2>Create Task Page</h2>
+
+<a href="#!/tasks" class="btn btn-success buttons">Back to tasks list</a>
+
+<form name="form" novalidate>
+    <span>{{errorMessage}}</span>
+
+    <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" class="form-control" id="title" placeholder="Enter title" ng-model="task.title" name="title" required maxlength="30">
+        <span ng-show="form.$dirty && form.title.$error.required">Please enter title</span>
+        <span ng-show="form.$dirty && form.title.$error.maxlength">No more 30 characters</span>
+    </div>
+
+    <div class="form-group">
+        <label for="content">Content:</label>
+        <textarea class="form-control" id="content" placeholder="Enter content" ng-model="task.content" name="content" required maxlength="30"></textarea>
+        <span ng-show="form.$dirty && form.content.$error.required">Please enter content</span>
+        <span ng-show="form.$dirty && form.content.$error.maxlength">No more 30 characters</span>
+    </div>
+
+    <div class="form-group">
+        <label for="content">Tags:</label>
+        <select class="form-control" ng-options="tag.name for tag in tags" ng-false-value="tag.id" id="selectedTags" ng-model="task.selectedTags" name="selectedTags" multiple></select>
+    </div>
+
+    <div class="form-group">
+        <label for="expirationDate">Expiration Date (Deadline):</label>
+        <input type="datetime" class="form-control" id="expirationDate" ng-model="task.expirationDate" name="expirationDate">
+    </div>
+
+    <button type="submit" class="btn btn-default" ng-click="create(task)">Create</button>
+</form>

@@ -1,0 +1,22 @@
+﻿
+<div class="pull-left main-block">
+    <h1>Task Info Page</h1>
+
+    <div class="btn-group buttons">
+        <a href="#!/tasks" class="btn btn-success">Back to tasks list</a>
+    </div>
+
+    <div class="col-md-12 well well-sm">
+        <div class="label label-success" ng-if="task.isDone">Done</div>
+        <div class="label label-danger" ng-if="task.isExpired">Expired</div>
+
+        <h2>{{task.title}}</h2>
+        <div class="label label-success tag" ng-repeat="tag in task.relatedTags">{{tag.name}}</div>
+        <p class="task-content">{{task.content}}</p>
+        <p><b>Creation Date:</b><span> {{task.creationDate}}</span></p>      
+        <p><b>Last Modification Date:</b><span> {{task.lastModificationDate}}</span></p>
+        <p><b>Expiration Date:</b><span ng-if="task.expirationDate"> {{task.expirationDate}}</span></p>
+
+        <a ng-href="#!/tasks/update/{{task.id}}" class="btn btn-primary">Edit</a>
+    </div>
+</div>

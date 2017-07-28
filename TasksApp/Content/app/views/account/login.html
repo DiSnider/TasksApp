@@ -1,0 +1,18 @@
+﻿<h2>Login Page</h2>
+<form name="form" novalidate>
+    <span>{{errorMessage}}</span>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="user.email" name="Email" required>
+        <span ng-show="form.Email.$error.required">Please enter your email</span>
+    </div>
+    <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" ng-model="user.password" name="Password" required>
+        <span ng-show="form.Password.$error.required">Please enter your password</span>
+    </div>
+    <div class="checkbox">
+        <label><input type="checkbox" ng-model="user.rememberMe" name="RememberMe"> Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="login(user)">Login</button> or <a href="#!/account/register" class="btn btn-primary">Register</a>
+</form>

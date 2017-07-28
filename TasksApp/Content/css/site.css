@@ -1,0 +1,25 @@
+﻿
+.search-form {
+    width: 20%; 
+    margin-top: 30px;
+}
+
+.main-block {
+    width: 75%;
+}
+
+.buttons {
+    margin: 20px 0;
+}
+
+.custom-pagination {
+    margin: 0 0 0 30px !important;
+}
+
+.tag {
+    margin-right: 10px;
+}
+
+.task-content {
+    margin: 20px 0;
+}

@@ -1,0 +1,56 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/lib/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/site.css" rel="stylesheet" />
+    <title>Tasks App</title>
+</head>
+<body ng-app="TasksApp">
+    <div ng-controller="UserInfoCtrl">
+        <nav class="navbar navbar-inverse" ng-cloak>
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#!/">Tasks Application</a>
+                </div>
+                <ul ng-if="currentUser" class="nav navbar-nav navbar-right">
+                    <li><a href="#!/account/login"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+                    <li><a href="#!/tasks"><span class="glyphicon glyphicon-log-user"></span>{{currentUser.login}}</a></li>
+                </ul>
+                <ul ng-if="!currentUser" class="nav navbar-nav navbar-right">
+                    <li><a href="#!/account/register" target="_self"><span class="glyphicon glyphicon-registration-mark"></span>Register</a></li>
+                    <li><a href="#!/account/login"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container" ng-view>
+
+    </div>
+
+    <script src="~/content/lib/jquery/jquery-2.2.4.min.js"></script>
+    <script src="~/content/lib/angular/angular.min.js"></script>
+    <script src="~/content/lib/angular/angular-route.min.js"></script>
+
+    <script src="~/content/app/app.js"></script>
+    <script src="~/content/app/services/authinterceptor.js"></script>
+    <script src="~/content/app/services/loginservice.js"></script>
+    <script src="~/content/app/services/tagsservice.js"></script>
+    <script src="~/content/app/services/tasksservice.js"></script>
+    <script src="~/content/app/controllers/userinfoctrl.js"></script>
+    <script src="~/content/app/controllers/loginctrl.js"></script>
+    <script src="~/content/app/controllers/registerctrl.js"></script>
+    <script src="~/content/app/controllers/tasksctrl.js"></script>
+    <script src="~/content/app/controllers/createtaskctrl.js"></script>
+    <script src="~/content/app/controllers/taskinfoctrl.js"></script>
+    <script src="~/content/app/controllers/updatetaskctrl.js"></script>
+</body>
+</html>
